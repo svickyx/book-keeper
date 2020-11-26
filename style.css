@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
+:root {
+  --primary-color: #7A5C58;
+  --border-radius: 5px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Karla', sans-serif;
+  background-color: var(--primary-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1{
+  width: 275px;
+  color: white;
+  padding: 20px;
+  margin: 20px auto 10px;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+}
+
+/*  user-select is for text can be selected or highlight by clicking it, none is to prevent it. 
+margin: top-20px, left and right-auto(will make it to the center) bottom-10px */
+
+h1:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+.bookmark-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.bookmark-items {
+  color:white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  margin: 10px;
+  border-radius: var(--border-radius);
+}
+
+.bookmark-items:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.item-group img {
+  height: 20px;
+  width: 20px;
+  vertical-align: sub;
+  margin-right: 5px;
+}
+/* vertical-align: sub will make the image to aligned with the subscript(下標線) baseline of the parent */
+
+a {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+i {
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  z-index: 2;
+}
+
+/* modal */
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+/* modal-container with top/left/bottom/right 0 margin makes it cover the whole page without any margin on the corner */
+
+.show-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* show-modal class is for show and off the modal-container */
+
+.modal {
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  max-width: 95%;
+  width: 500px;
+  animation: modalopen 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* max-width is 95% will make it always 95% of the page on mobile devices */
+/* add animation to the modal itself, the name of the animation and the duration of the animation */
+/* use @keyframe to define the animation content, we want the modal opaticy to change from 0% to 100% in 1 second */
+
+.close-icon {
+  float: right;
+  color: white;
+  position: relative;
+  top: 13px;
+  right: 13px;
+  font-size: 22px;
+  cursor: pointer;
+}
+/* close-icon can jump out of the original box, and relocate with position: relative  */
+
+.modal-header {
+  background: var(--primary-color);
+  padding: 15px;
+  color: white;
+}
+
+h3 {
+  margin: 0;
+}
+/* all header element has margin, so its better to make it 0 if you want customized */
+
+.modal-content {
+  background: whitesmoke;
+  padding: 20px;
+}
+
+/* Form */
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  height: 55px;
+}
+
+.form-label {
+  color: var(--primary-color);
+}
+
+.form-input {
+  width: 97%;
+  padding: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* for large smartphone */
+@media screen and (max-width: 600px) {
+  .bookmark-container {
+    flex-direction: column;
+  }
+  i {
+    float: right;
+  }
+
+}
+
